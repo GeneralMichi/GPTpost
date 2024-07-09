@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+</head>
+<body>
+    <h1>Resultados</h1>
+    <div id="gpt-result"></div>
+    <div id="dalle-result"></div>
+
+    <script>
+        // Obtener parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const gptResult = urlParams.get('gpt');
+        const dalleResult = urlParams.get('dalle');
+
+        // Verificar los parámetros
+        if (gptResult && dalleResult) {
+            // Mostrar resultados
+            document.getElementById('gpt-result').innerText = `Descripción del negocio: ${gptResult}`;
+            const dalleImage = document.createElement('img');
+            dalleImage.src = dalleResult;
+            dalleImage.alt = 'Generated Logo';
+            document.getElementById('dalle-result').appendChild(dalleImage);
+        } else {
+            document.getElementById('gpt-result').innerText = 'Error al recibir los resultados.';
+        }
+    </script>
+</body>
+</html>
